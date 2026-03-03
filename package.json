@@ -1,0 +1,24 @@
+{
+  "name": "mcp-chatwoot",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun --hot src/index.ts",
+    "start": "NODE_ENV=production bun src/index.ts",
+    "test": "bun test --coverage",
+    "lint": "bun biome check --error-on-warnings",
+    "format": "bun biome check --write",
+    "build-check": "bunx tsc --noEmit",
+    "check": "bun run lint && bun run build-check && bun run test",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.5",
+    "@types/bun": "latest",
+    "husky": "^9.1.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
