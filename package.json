@@ -2,19 +2,39 @@
   "name": "@fazer-ai/mcp-chatwoot",
   "version": "0.0.0",
   "description": "MCP server for the Chatwoot API (fazer.ai fork) — provides tools for managing conversations, contacts, inboxes, teams, kanban boards, and more.",
-  "module": "src/index.ts",
-  "type": "module",
-  "bin": {
-    "mcp-chatwoot": "src/index.ts"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fazer-ai/mcp-chatwoot"
   },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-chatwoot",
+    "modelcontextprotocol",
+    "claude",
+    "chatwoot",
+    "fazer-ai"
+  ],
+  "module": "src/index.ts",
+  "main": "dist/index.js",
+  "type": "module",
+  "bin": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "bun --hot src/index.ts",
     "start": "NODE_ENV=production bun src/index.ts",
+    "build": "echo '#!/usr/bin/env node' > dist/index.js && bun build src/index.ts --target node >> dist/index.js",
     "test": "bun test",
     "lint": "bun biome check --error-on-warnings",
     "format": "bun biome check --write",
     "build-check": "bunx tsc --noEmit",
     "check": "bun run lint && bun run build-check && bun run test",
+    "prepublishOnly": "bun run build",
     "prepare": "husky"
   },
   "devDependencies": {
