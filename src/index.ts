@@ -1,6 +1,6 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { ChatwootClient } from "./client.ts";
-import { createServer } from "./server.ts";
+import { ChatwootClient } from "@/client.ts";
+import { createServer } from "@/server.ts";
 
 const baseUrl = process.env.CHATWOOT_BASE_URL;
 const apiToken = process.env.CHATWOOT_API_TOKEN;

@@ -6,7 +6,7 @@
  */
 
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { ChatwootClient } from "./client.ts";
+import type { ChatwootClient } from "@/client.ts";
 
 /** Signature every tool module must export. */
 export type RegisterFn = (server: McpServer, client: ChatwootClient) => void;

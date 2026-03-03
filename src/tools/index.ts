@@ -1,5 +1,5 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import type { ChatwootClient } from "../client.ts";
+import type { ChatwootClient } from "@/client.ts";
 
 import { register as registerAccount } from "./account.ts";
 import { register as registerAgentBots } from "./agent-bots.ts";

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import type { RegisterFn } from "../types.ts";
+import type { RegisterFn } from "@/types.ts";
 
 const accountId = z.number().describe("The account ID");
 const conversationId = z.number().describe("The conversation ID");

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, mock, test } from "bun:test";
-import { ChatwootApiError, ChatwootClient } from "../src/client.ts";
+import { ChatwootApiError, ChatwootClient } from "@/client.ts";
 
 const BASE_URL = "https://chatwoot.example.com";
 const API_TOKEN = "test-token-123";

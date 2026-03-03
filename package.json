@@ -1,6 +1,6 @@
 {
   "name": "@fazer-ai/mcp-chatwoot",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "MCP server for the Chatwoot API (fazer.ai fork) — provides tools for managing conversations, contacts, inboxes, teams, kanban boards, and more.",
   "module": "src/index.ts",
   "type": "module",

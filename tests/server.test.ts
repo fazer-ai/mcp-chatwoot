@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
-import { ChatwootClient } from "../src/client.ts";
-import { createServer } from "../src/server.ts";
+import { ChatwootClient } from "@/client.ts";
+import { createServer } from "@/server.ts";
 
 describe("Server", () => {
   test("creates server with all tools registered", () => {

@@ -1,4 +1,4 @@
-import type { RegisterFn } from "../types.ts";
+import type { RegisterFn } from "@/types.ts";
 
 export const register: RegisterFn = (server, client) => {
   server.registerTool(
