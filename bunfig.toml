@@ -1,3 +1,6 @@
+[publish]
+registry = "https://registry.npmjs.org"
+
 [test]
 coverage = true
 coverageSkipTestFiles = true
