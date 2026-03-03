@@ -1,5 +1,8 @@
 # @fazer-ai/mcp-chatwoot
 
+[![npm version](https://img.shields.io/npm/v/@fazer-ai/mcp-chatwoot.svg)](https://www.npmjs.com/package/@fazer-ai/mcp-chatwoot)
+[![npm downloads](https://img.shields.io/npm/dm/@fazer-ai/mcp-chatwoot.svg)](https://www.npmjs.com/package/@fazer-ai/mcp-chatwoot)
+
 A [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server that exposes the full [Chatwoot](https://www.chatwoot.com/) API — including [fazer.ai](https://fazer.ai) exclusive features — as **129 tools** for use with AI assistants like Claude, VS Code Copilot, and others.
 
 ## Features
