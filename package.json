@@ -1,12 +1,16 @@
 {
-  "name": "mcp-chatwoot",
-  "module": "index.ts",
+  "name": "@fazer-ai/mcp-chatwoot",
+  "version": "1.0.0",
+  "description": "MCP server for the Chatwoot API (fazer.ai fork) — provides tools for managing conversations, contacts, inboxes, teams, kanban boards, and more.",
+  "module": "src/index.ts",
   "type": "module",
-  "private": true,
+  "bin": {
+    "mcp-chatwoot": "src/index.ts"
+  },
   "scripts": {
     "dev": "bun --hot src/index.ts",
     "start": "NODE_ENV=production bun src/index.ts",
-    "test": "bun test --coverage",
+    "test": "bun test",
     "lint": "bun biome check --error-on-warnings",
     "format": "bun biome check --write",
     "build-check": "bunx tsc --noEmit",
@@ -20,5 +24,9 @@
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "zod": "^4.3.6"
   }
 }
