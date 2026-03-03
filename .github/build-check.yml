@@ -1,0 +1,49 @@
+name: Build Check on PR
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  type-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Cache Bun Installation
+        uses: actions/cache@v5
+        with:
+          path: ~/.bun
+          key: ${{ runner.os }}-bun
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Cache Dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-deps-${{ hashFiles('bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-deps-
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Generate Prisma Client
+        run: bunx prisma generate
+        env:
+          DATABASE_URL: 'postgresql://dummy:dummy@localhost:5432/dummy'
+
+      - name: Check i18n locale files are up-to-date
+        run: |
+          bun i18n:extract
+          git diff --exit-code src/client/locales/ || (echo "Locale files are out of date. Run 'bun i18n:extract' and commit the changes." && exit 1)
+
+      - name: Run TypeScript type check
+        run: bun run build-check

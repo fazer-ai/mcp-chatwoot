@@ -1,0 +1,42 @@
+name: Run Tests on PR
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v6
+
+      - name: Cache Bun Installation
+        uses: actions/cache@v5
+        with:
+          path: ~/.bun
+          key: ${{ runner.os }}-bun
+
+      - name: Install Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Cache Dependencies
+        uses: actions/cache@v5
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-deps-${{ hashFiles('bun.lockb') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-deps-
+
+      - name: Install All Dependencies
+        run: bun install
+
+      - name: Generate Prisma Client
+        run: bun run prisma:generate
+
+      - name: Run Tests
+        run: bun run test
