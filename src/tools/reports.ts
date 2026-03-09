@@ -4,7 +4,7 @@ import type { RegisterFn } from "@/types.ts";
 const accountId = z.number().describe("The account ID");
 
 export const register: RegisterFn = (server, client) => {
-  // --- Reports V1 ---
+  // --- Reports V2 ---
 
   server.registerTool(
     "reports_account_overview",
@@ -22,7 +22,7 @@ export const register: RegisterFn = (server, client) => {
     },
     async ({ account_id, type }) => {
       const result = await client.get(
-        `/api/v1/accounts/${account_id}/reports`,
+        `/api/v2/accounts/${account_id}/reports`,
         { type },
       );
       return {
@@ -46,7 +46,7 @@ export const register: RegisterFn = (server, client) => {
     },
     async ({ account_id, ...params }) => {
       const result = await client.get(
-        `/api/v1/accounts/${account_id}/reports/summary`,
+        `/api/v2/accounts/${account_id}/reports/summary`,
         { type: "account", ...params },
       );
       return {
@@ -69,7 +69,7 @@ export const register: RegisterFn = (server, client) => {
     },
     async ({ account_id, ...params }) => {
       const result = await client.get(
-        `/api/v1/accounts/${account_id}/reports/agents/summary`,
+        `/api/v2/accounts/${account_id}/summary_reports/agent`,
         params,
       );
       return {
@@ -95,41 +95,7 @@ export const register: RegisterFn = (server, client) => {
     },
     async ({ account_id, ...params }) => {
       const result = await client.get(
-        `/api/v1/accounts/${account_id}/reports/conversations_filter`,
-        params,
-      );
-      return {
-        content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
-      };
-    },
-  );
-
-  // --- Reports V2 ---
-
-  server.registerTool(
-    "reports_v2_overview",
-    {
-      title: "Reports V2 Overview",
-      description:
-        "Get v2 reports overview with flexible time-range and grouping",
-      inputSchema: {
-        account_id: accountId,
-        since: z.string().describe("Start date (ISO 8601)"),
-        until: z.string().describe("End date (ISO 8601)"),
-        group_by: z
-          .enum(["day", "week", "month", "year"])
-          .optional()
-          .describe("Grouping interval"),
-        timezone: z
-          .string()
-          .optional()
-          .describe("Timezone (e.g. America/Sao_Paulo)"),
-      },
-      annotations: { readOnlyHint: true },
-    },
-    async ({ account_id, ...params }) => {
-      const result = await client.get(
-        `/api/v2/accounts/${account_id}/reports/overview`,
+        `/api/v2/accounts/${account_id}/reports/conversations`,
         params,
       );
       return {
@@ -156,7 +122,7 @@ export const register: RegisterFn = (server, client) => {
     },
     async ({ account_id, ...params }) => {
       const result = await client.get(
-        `/api/v2/accounts/${account_id}/reports/agents`,
+        `/api/v2/accounts/${account_id}/summary_reports/agent`,
         params,
       );
       return {
@@ -183,7 +149,7 @@ export const register: RegisterFn = (server, client) => {
     },
     async ({ account_id, ...params }) => {
       const result = await client.get(
-        `/api/v2/accounts/${account_id}/reports/inboxes`,
+        `/api/v2/accounts/${account_id}/summary_reports/inbox`,
         params,
       );
       return {
@@ -210,34 +176,7 @@ export const register: RegisterFn = (server, client) => {
     },
     async ({ account_id, ...params }) => {
       const result = await client.get(
-        `/api/v2/accounts/${account_id}/reports/teams`,
-        params,
-      );
-      return {
-        content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
-      };
-    },
-  );
-
-  server.registerTool(
-    "reports_v2_labels",
-    {
-      title: "Reports V2 Labels",
-      description: "Get v2 label-based reports",
-      inputSchema: {
-        account_id: accountId,
-        since: z.string().describe("Start date (ISO 8601)"),
-        until: z.string().describe("End date (ISO 8601)"),
-        group_by: z
-          .enum(["day", "week", "month", "year"])
-          .optional()
-          .describe("Grouping interval"),
-      },
-      annotations: { readOnlyHint: true },
-    },
-    async ({ account_id, ...params }) => {
-      const result = await client.get(
-        `/api/v2/accounts/${account_id}/reports/labels`,
+        `/api/v2/accounts/${account_id}/summary_reports/team`,
         params,
       );
       return {

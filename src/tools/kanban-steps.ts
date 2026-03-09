@@ -5,7 +5,7 @@ const accountId = z.number().describe("The account ID");
 
 export const register: RegisterFn = (server, client) => {
   const base = (accountId: number, boardId: number) =>
-    `/api/v1/accounts/${accountId}/kanban_boards/${boardId}/kanban_steps`;
+    `/api/v1/accounts/${accountId}/kanban/boards/${boardId}/steps`;
 
   server.registerTool(
     "kanban_steps_list",

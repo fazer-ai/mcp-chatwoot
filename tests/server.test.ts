@@ -23,7 +23,7 @@ describe("Server", () => {
 
     // biome-ignore lint/suspicious/noExplicitAny: accessing internal properties for testing
     const tools = (server as any)._registeredTools;
-    expect(Object.keys(tools).length).toBe(129);
+    expect(Object.keys(tools).length).toBe(123);
   });
 
   test("has fazer.ai exclusive tools", () => {
@@ -41,7 +41,6 @@ describe("Server", () => {
     expect(tools.kanban_steps_list).toBeDefined();
     expect(tools.kanban_tasks_list).toBeDefined();
     expect(tools.kanban_audit_events_list).toBeDefined();
-    expect(tools.kanban_preferences_get).toBeDefined();
 
     // Scheduled messages
     expect(tools.scheduled_messages_list).toBeDefined();

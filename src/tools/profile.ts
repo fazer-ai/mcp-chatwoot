@@ -10,7 +10,7 @@ export const register: RegisterFn = (server, client) => {
       annotations: { readOnlyHint: true },
     },
     async () => {
-      const result = await client.get("/auth/sign_in");
+      const result = await client.get("/api/v1/profile");
       return {
         content: [{ type: "text", text: JSON.stringify(result, null, 2) }],
       };
