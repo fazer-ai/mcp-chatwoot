@@ -23,7 +23,7 @@ describe("Server", () => {
 
     // biome-ignore lint/suspicious/noExplicitAny: accessing internal properties for testing
     const tools = (server as any)._registeredTools;
-    expect(Object.keys(tools).length).toBe(123);
+    expect(Object.keys(tools).length).toBe(124);
   });
 
   test("has fazer.ai exclusive tools", () => {
