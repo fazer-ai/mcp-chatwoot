@@ -20,6 +20,7 @@ import { register as registerKanbanAuditEvents } from "./kanban-audit-events.ts"
 import { register as registerKanbanBoards } from "./kanban-boards.ts";
 import { register as registerKanbanSteps } from "./kanban-steps.ts";
 import { register as registerKanbanTasks } from "./kanban-tasks.ts";
+import { register as registerLabels } from "./labels.ts";
 import { register as registerMessages } from "./messages.ts";
 import { register as registerProfile } from "./profile.ts";
 import { register as registerReports } from "./reports.ts";
@@ -47,6 +48,7 @@ const registrations = [
   registerKanbanBoards,
   registerKanbanSteps,
   registerKanbanTasks,
+  registerLabels,
   registerMessages,
   registerProfile,
   registerReports,

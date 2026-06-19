@@ -119,6 +119,10 @@ Add to your `.vscode/mcp.json`:
 
 `contact_labels_list`, `contact_labels_set`
 
+### Labels (1)
+
+`labels_list`
+
 ### Conversations (12)
 
 `conversations_meta`, `conversations_list`, `conversations_create`, `conversations_filter`, `conversations_get`, `conversations_update`, `conversations_toggle_status`, `conversations_toggle_priority`, `conversations_set_custom_attributes`, `conversations_get_labels`, `conversations_set_labels`, `conversations_reporting_events`
